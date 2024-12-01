@@ -5,6 +5,7 @@ from typing import List, Optional
 from bson import ObjectId
 from urllib.parse import quote_plus
 import os
+import uvicorn
 app = FastAPI()
 
 # Encode password
