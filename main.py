@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from typing import List, Optional
 from bson import ObjectId
 from urllib.parse import quote_plus
+import os
 app = FastAPI()
 
 # Encode password
@@ -74,3 +75,6 @@ async def update_student(id: str, student_update: StudentUpdate):
 async def delete_student(id: str):
     await db.students.delete_one({"_id": ObjectId(id)})
     return {}
+
+port = int(os.getenv("PORT", 8000))
+uvicorn.run(app, host="0.0.0.0", port=port)
