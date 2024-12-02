@@ -10,11 +10,11 @@ from models.student import Student, StudentUpdate, StudentResponse, StudentListR
 
 router = APIRouter()
 
-@router.post("/", status_code=201, response_model=StudentResponse)
+@router.post("", status_code=201, response_model=StudentResponse)
 async def create_student(student: Student):
     return await create_student_service(student)
 
-@router.get("/", response_model=StudentListResponse)
+@router.get("", response_model=StudentListResponse)
 async def list_students(country: str = None, age: int = None):
     return await list_students_service(country, age)
 
